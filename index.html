@@ -105,94 +105,30 @@
         </section>
         </section>
 
-        <section data-state="triangle">
-        <p>We can use protocol semantics as the foundation to our architecture.</p>
+        <section>
+        <p>HTTP alone has a lot more semantics than you might think.</p>
+        <ul>
+          <li>RFC 7230, HTTP/1.1: Message Syntax and Routing</li>
+          <li>RFC 7231, HTTP/1.1: Semantics and Content</li>
+          <li>RFC 7232, HTTP/1.1: Conditional Requests</li>
+          <li>RFC 7233, HTTP/1.1: Range Requests</li>
+          <li>RFC 7234, HTTP/1.1: Caching</li>
+          <li>RFC 7235, HTTP/1.1: Authentication</li>
+        </ul>
+        <p>HTTP/2 was published as RFC 7540 in May 2015.</p>
+        </section>
+
+        <section>
+        <p>We can use protocol semantics as the foundation to our architecture, where our own application semantics are at the top.</p>
+        <p class="fragment">How do we fill the gap?</p>
+        <p class="fragment" id="fill_the_gap" data-state="fill_the_gap"></p>
         <p><canvas id="semantics_pyramid" width="600" height="600"></canvas></p>
         </section>
 
-        <section data-markdown>
-        <script type="text/template">
-          ## Markdown support
-
-          Write content using inline or external Markdown.
-          Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-          ```
-          <section data-markdown>
-          ## Markdown support
-
-          Write content using inline or external Markdown.
-          Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-          </section>
-          ```
-        </script>
-        </section>
-
         <section>
-        <section id="fragments">
-        <h2>Fragments</h2>
-        <p>Hit the next arrow...</p>
-        <p class="fragment">... to step through ...</p>
-        <p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
 
-        <aside class="notes">
-        This slide has fragments which are also stepped through in the notes window.
-        </aside>
-        </section>
-        <section>
-        <h2>Fragment Styles</h2>
-        <p>There's different types of fragments, like:</p>
-        <p class="fragment grow">grow</p>
-        <p class="fragment shrink">shrink</p>
-        <p class="fragment fade-out">fade-out</p>
-        <p class="fragment current-visible">current-visible</p>
-        <p class="fragment highlight-red">highlight-red</p>
-        <p class="fragment highlight-blue">highlight-blue</p>
-        </section>
         </section>
 
-        <section id="transitions">
-        <h2>Transition Styles</h2>
-        <p>
-        You can select from different transitions, like: <br>
-        <a href="?transition=none#/transitions">None</a> -
-        <a href="?transition=fade#/transitions">Fade</a> -
-        <a href="?transition=slide#/transitions">Slide</a> -
-        <a href="?transition=convex#/transitions">Convex</a> -
-        <a href="?transition=concave#/transitions">Concave</a> -
-        <a href="?transition=zoom#/transitions">Zoom</a>
-        </p>
-        </section>
-
-        <section id="themes">
-        <h2>Themes</h2>
-        <p>
-        reveal.js comes with a few themes built in: <br>
-        <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-        </p>
-        </section>
-
-        <section>
-        <section data-background="#dddddd">
-        <h2>Slide Backgrounds</h2>
-        <p>
-        Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-        </p>
-        <a href="#" class="navigate-down">
-          <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-        </a>
-        </section>
         <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
         <h2>Image Backgrounds</h2>
             <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
@@ -437,8 +373,14 @@ Reveal.addEventListener( 'customevent', function() {
         context.fill();
         context.font = "30px Arial";
         context.fillStyle = "black";
-        context.fillText("Application Semantics",width/2,height/3);
+        context.fillText("Application Semantics",width/1.9,height/6);
         context.fillText("Protocol Semantics",width/1.5,height);
+
+        Reveal.addEventListener( 'fragmentshown', function( event ) {
+          if(event.fragment.id == "fill_the_gap"){
+            context.fillText("Hypermedia!",width/1.5,height/2);
+          }
+        });
       </script>
 
     </body>
