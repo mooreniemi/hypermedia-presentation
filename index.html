@@ -65,6 +65,12 @@
         </section>
 
         <section>
+        <p>The running example of this presentation.</p>
+        <p>ZipErrands API</p>
+        <p>Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
+        </section>
+
+        <section>
         <section>
         <h2>Why build RESTful Web APIs?</h2>
         <p class="fragment">Constraints restrict complexity.</p>
@@ -89,8 +95,20 @@
         </section>
 
         <section>
+        <p>State on the Web is of two types:</p>
+        <ol>
+          <li>Resource state</li>
+          <li>Application state</li>
+        </ol>
+        <p>How do we make state changes?</p>
+        <p>Representations! (That's why it's called Representational State Transfer. :))</p>
+        </section>
+
+        </section>
+
         <section>
-        <h2>Working RESTfully means leveraging the Web as a core technology.</h2>
+        <section>
+        <p>Working RESTfully means leveraging the Web as a core technology and organizing principle.</p>
         <p>
         How do we generally approach writing programs?
         </p>
@@ -102,11 +120,17 @@
         <section>
         <p>If we approach the "Web" as libraries we can use, what do we get out of the box?</p>
         <h2 class="fragment">Protocol semantics.</h2>
+        <h2 class="fragment">Domain semantics.</h2>
+        <h2 class="fragment">Application semantics.</h2>
         </section>
         </section>
 
         <section>
-        <p>HTTP alone has a lot more semantics than you might think.</p>
+        <section>
+        <p>Yeah, yeah yeah... I've seen POST, PUT, DELETE, etc...</p>
+        <p class="fragment">HTTP alone has a lot more semantics than you might think.</p>
+        </section>
+        <section>
         <ul>
           <li>RFC 7230, HTTP/1.1: Message Syntax and Routing</li>
           <li>RFC 7231, HTTP/1.1: Semantics and Content</li>
@@ -117,6 +141,11 @@
         </ul>
         <p>HTTP/2 was published as RFC 7540 in May 2015.</p>
         </section>
+        <section>
+        <p>Meh. Why not just overload POST with everything you need?</p>
+        <p class="fragment">One of the Fielding constraints of REST is "self-describing messages". HTTP Verbs, as an example, at very least help classify your functions: safe/unsafe, idempotent/not-idempotent.</p>
+        </section>
+        </section>
 
         <section>
         <p>We can use protocol semantics as the foundation to our architecture, where our own application semantics are at the top.</p>
@@ -126,7 +155,10 @@
         </section>
 
         <section>
-
+        <h2>HTML</h2>
+        <p>Hyper Text Markup Language is the original hypermedia type.</p>
+        <p>It's protocol semantics are limited: PUT and DELETE in HTTP are not supported.</p>
+        <p>It's domain semantics are specifically about sharing human readable documents, which is a very popular and very flexible domain. If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider Wikipedia.)</p>
         </section>
 
         <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
@@ -378,7 +410,7 @@ Reveal.addEventListener( 'customevent', function() {
 
         Reveal.addEventListener( 'fragmentshown', function( event ) {
           if(event.fragment.id == "fill_the_gap"){
-            context.fillText("Hypermedia!",width/1.5,height/2);
+            context.fillText("Hypermedia!",width/1.5,height/1.7);
           }
         });
       </script>
