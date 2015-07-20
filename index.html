@@ -65,9 +65,9 @@
         </section>
 
         <section>
-        <p>The running example of this presentation.</p>
+        <p>The running example of this presentation?</p>
         <p>ZipErrands API</p>
-        <p>Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
+        <p align="left">Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
         </section>
 
         <section>
@@ -90,8 +90,15 @@
         <p>
         HTTP, URLs, and HTML.
         </p>
-        <p class="fragment">What about Javascript?</p>
+        <p class="fragment"><i>Pssst.</i> What about Javascript?</p>
         <p class="fragment">It satisfies one of the <i>optional</i> constraints in REST: "Mobile Code On Demand".</p>
+        </section>
+
+        <section>
+        <p>But like, what IS the web???</p>
+        <p class="fragment">The web is a distributed computing system.</p>
+        <p class="fragment">What do all useful computational systems need to do?</p>
+        <p class="fragment">To my chagrin, they need to manipulate <i>state</i>.</p>
         </section>
 
         <section>
@@ -101,7 +108,8 @@
           <li>Application state</li>
         </ol>
         <p>How do we make state changes?</p>
-        <p>Representations! (That's why it's called Representational State Transfer. :))</p>
+        <p>Representations!</p>
+        <p>(That's why it's called Representational State Transfer. :))</p>
         </section>
 
         </section>
@@ -127,6 +135,10 @@
 
         <section>
         <section>
+        <p>What are protocol semantics anyway?</p>
+        <p class="fragment">"the set of rules regarding how to fashion valid requests and responses using one or more message protocols"</p>
+        </section>
+        <section>
         <p>Yeah, yeah yeah... I've seen POST, PUT, DELETE, etc...</p>
         <p class="fragment">HTTP alone has a lot more semantics than you might think.</p>
         </section>
@@ -141,14 +153,16 @@
         </ul>
         <p>HTTP/2 was published as RFC 7540 in May 2015.</p>
         </section>
+
         <section>
         <p>Meh. Why not just overload POST with everything you need?</p>
-        <p class="fragment">One of the Fielding constraints of REST is "self-describing messages". HTTP Verbs, as an example, at very least help classify your functions: safe/unsafe, idempotent/not-idempotent.</p>
+        <p class="fragment">placeholder</p>
+        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages". HTTP Verbs, as an example, at very least help classify your functions: safe/unsafe, idempotent/not-idempotent.</p>
         </section>
         </section>
 
         <section>
-        <p>We can use protocol semantics as the foundation to our architecture, where our own application semantics are at the top.</p>
+        <p align="left">We can use protocol semantics as the foundation to our architecture, where our own application semantics are at the top.</p>
         <p class="fragment">How do we fill the gap?</p>
         <p class="fragment" id="fill_the_gap" data-state="fill_the_gap"></p>
         <p><canvas id="semantics_pyramid" width="600" height="600"></canvas></p>
@@ -156,49 +170,22 @@
 
         <section>
         <h2>HTML</h2>
-        <p>Hyper Text Markup Language is the original hypermedia type.</p>
-        <p>It's protocol semantics are limited: PUT and DELETE in HTTP are not supported.</p>
-        <p>It's domain semantics are specifically about sharing human readable documents, which is a very popular and very flexible domain. If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider Wikipedia.)</p>
+        <p align="left">Hyper Text Markup Language is the original hypermedia type.</p>
+        <p align="left">Its <b>protocol semantics</b> are limited: PUT and DELETE in HTTP are not supported.</p>
+        <p align="left">Its <b>domain semantics</b> are specifically about sharing human readable documents, which is a very popular and very flexible domain. If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider Wikipedia.)</p>
         </section>
 
         <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
         <h2>Image Backgrounds</h2>
             <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
         </section>
-        <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-        <h2>Tiled Backgrounds</h2>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+        <h2>... and GIFs!</h2>
         </section>
-        <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-        <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-          <h2>Video Backgrounds</h2>
-              <pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-          </div>
-          </section>
-          <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-          <h2>... and GIFs!</h2>
-          </section>
-          </section>
 
-          <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-          <h2>Background Transitions</h2>
-          <p>
-          Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-          </p>
-          <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-          </section>
-
-          <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-          <h2>Background Transitions</h2>
-          <p>
-          You can override background transitions per-slide.
-          </p>
-          <pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-          </section>
-
-          <section>
-          <h2>Pretty Code</h2>
-          <pre><code data-trim contenteditable>
+        <section>
+        <h2>Pretty Code</h2>
+        <pre><code data-trim contenteditable>
 function linkify( selector ) {
   if( supports3DTransforms ) {
 
@@ -214,206 +201,116 @@ function linkify( selector ) {
   }
 }
           </code></pre>
-          <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-          </section>
+        <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+        </section>
 
-          <section>
-          <h2>Marvelous List</h2>
-          <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-          </ul>
-          </section>
+        <section>
+        <h2>Clever Quotes</h2>
+        <p>
+        These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+          &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+        </p>
+        <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+          &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+          reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+        </blockquote>
+        </section>
 
-          <section>
-          <h2>Fantastic Ordered List</h2>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
-          </section>
+        <section>
+        <h2>Intergalactic Interconnections</h2>
+        <p>
+        You can link between slides internally,
+        <a href="#/2/3">like this</a>.
+        </p>
+        </section>
 
-          <section>
-          <h2>Tabular Tables</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Value</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Apples</td>
-                <td>$1</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td>Lemonade</td>
-                <td>$2</td>
-                <td>18</td>
-              </tr>
-              <tr>
-                <td>Bread</td>
-                <td>$3</td>
-                <td>2</td>
-              </tr>
-            </tbody>
-          </table>
-          </section>
+        <section>
+        <h2>Speaker View</h2>
+        <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+        <p>Press the <em>S</em> key to try it out.</p>
 
-          <section>
-          <h2>Clever Quotes</h2>
-          <p>
-          These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-          </p>
-          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-            reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-          </blockquote>
-          </section>
+        <aside class="notes">
+        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+        </aside>
+        </section>
 
-          <section>
-          <h2>Intergalactic Interconnections</h2>
-          <p>
-          You can link between slides internally,
-          <a href="#/2/3">like this</a>.
-          </p>
-          </section>
-
-          <section>
-          <h2>Speaker View</h2>
-          <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-          <p>Press the <em>S</em> key to try it out.</p>
-
-          <aside class="notes">
-          Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-          </aside>
-          </section>
-
-          <section>
-          <h2>Export to PDF</h2>
-          <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-          <iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-          </section>
-
-          <section>
-          <h2>Global State</h2>
-          <p>
-          Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-          will be added as a class to the document element when the slide is open. This lets you
-          apply broader style changes, like switching the page background.
-          </p>
-          </section>
-
-          <section data-state="customevent">
-          <h2>State Events</h2>
-          <p>
-          Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-          </p>
-          <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+        <section data-state="customevent">
+        <h2>State Events</h2>
+        <p>
+        Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+        </p>
+        <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
 Reveal.addEventListener( 'customevent', function() {
   console.log( '"customevent" has fired' );
 } );
           </code></pre>
-          </section>
-
-          <section>
-          <h2>Take a Moment</h2>
-          <p>
-          Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-          </p>
-          </section>
-
-          <section>
-          <h2>Much more</h2>
-          <ul>
-            <li>Right-to-left support</li>
-            <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-          </ul>
-          </section>
-
-          <section style="text-align: left;">
-          <h1>THE END</h1>
-          <p>
-          - <a href="http://slides.com">Try the online editor</a> <br>
-          - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-          </p>
-          </section>
-
-        </div>
+        </section>
 
       </div>
 
-      <script src="lib/js/head.min.js"></script>
-      <script src="js/reveal.js"></script>
+    </div>
 
-      <script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-        // Full list of configuration options available at:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-          controls: true,
-          progress: true,
-          history: true,
-          center: true,
+    <script>
 
-          transition: 'slide', // none/fade/slide/convex/concave/zoom
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-          // Optional reveal.js plugins
-          dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true },
-          { src: 'plugin/notes/notes.js', async: true }
-          ]
-        });
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-        var context = document.getElementById("semantics_pyramid").getContext("2d");
-        var width = 400;  // Triangle Width
-        var height = 400; // Triangle Height
-        var padding = 20;
+        // Optional reveal.js plugins
+        dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
 
-        // Draw a path
-        context.beginPath();
-        context.moveTo(padding + width/2, padding);        // Top Corner
-        context.lineTo(padding + width, height + padding); // Bottom Right
-        context.lineTo(padding, height + padding);         // Bottom Left
-        context.closePath();
+      var context = document.getElementById("semantics_pyramid").getContext("2d");
+      var width = 400;  // Triangle Width
+      var height = 400; // Triangle Height
+      var padding = 20;
 
-        // Fill the path
-        context.fillStyle = "#B2E6FF";
-        context.fill();
-        // Add a horizon reflection with a gradient to transparent
-        gradient = context.createLinearGradient(0,padding,0,padding+height);
-        gradient.addColorStop(0.5, "transparent");
-        gradient.addColorStop(0.5, "#B2E6FF");
-        gradient.addColorStop(1, "#80CC99");
+      // Draw a path
+      context.beginPath();
+      context.moveTo(padding + width/2, padding);        // Top Corner
+      context.lineTo(padding + width, height + padding); // Bottom Right
+      context.lineTo(padding, height + padding);         // Bottom Left
+      context.closePath();
 
-        // Fill the path
-        context.fillStyle = gradient;
-        context.fill();
-        context.font = "30px Arial";
-        context.fillStyle = "black";
-        context.fillText("Application Semantics",width/1.9,height/6);
-        context.fillText("Protocol Semantics",width/1.5,height);
+      // Fill the path
+      context.fillStyle = "#B2E6FF";
+      context.fill();
+      // Add a horizon reflection with a gradient to transparent
+      gradient = context.createLinearGradient(0,padding,0,padding+height);
+      gradient.addColorStop(0.5, "transparent");
+      gradient.addColorStop(0.5, "#B2E6FF");
+      gradient.addColorStop(1, "#80CC99");
 
-        Reveal.addEventListener( 'fragmentshown', function( event ) {
-          if(event.fragment.id == "fill_the_gap"){
-            context.fillText("Hypermedia!",width/1.5,height/1.7);
-          }
-        });
-      </script>
+      // Fill the path
+      context.fillStyle = gradient;
+      context.fill();
+      context.font = "30px Arial";
+      context.fillStyle = "black";
+      context.fillText("Application Semantics",width/1.9,height/6);
+      context.fillText("Protocol Semantics",width/1.5,height);
 
-    </body>
-  </html>
+      Reveal.addEventListener( 'fragmentshown', function( event ) {
+        if(event.fragment.id == "fill_the_gap"){
+          context.fillText("Hypermedia!",width/1.5,height/1.7);
+        }
+      });
+    </script>
+
+  </body>
+</html>
