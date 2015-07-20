@@ -136,7 +136,7 @@
         <section>
         <section>
         <p>What are protocol semantics anyway?</p>
-        <p class="fragment">"the set of rules regarding how to fashion valid requests and responses using one or more message protocols"</p>
+        <blockquote class="fragment">"the set of rules regarding how to fashion valid requests and responses using one or more message protocols"</blockquote>
         </section>
         <section>
         <p>Yeah, yeah yeah... I've seen POST, PUT, DELETE, etc...</p>
@@ -156,31 +156,68 @@
 
         <section>
         <p>Meh. Why not just overload POST with everything you need?</p>
-        <p class="fragment">placeholder</p>
-        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages". HTTP Verbs, as an example, at very least help classify your functions: safe/unsafe, idempotent/not-idempotent.</p>
+        <p class="fragment" align="left">When you use POST with overloaded semantics, you're limiting yourself to function calls.</p>
+        <p class="fragment" align="left">Your alternative is <a href="http://www.sapphiresteel.com/Tutorials/sapphire-ruby-in-steel-tutorials/Programming/Ruby-The-Smalltalk-Way-1.html">message passing</a>. Does the Web offer that?</p>
+        <h2 class="fragment" align="left">Yes.</h2>
+        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages".</p>
+        <p class="fragment" align="left">If you're unconvinced, talk to me later about Smalltalk. :)</p>
         </section>
+
         </section>
 
         <section>
-        <p align="left">We can use protocol semantics as the foundation to our architecture, where our own application semantics are at the top.</p>
-        <p class="fragment">How do we fill the gap?</p>
+        <section>
+        <p align="left">Protocol semantics help define the control flow of our application, but they would be a pretty weak application on their own.</p>
+        <p align="left" class="fragment">The application semantics of the protocol map to CRUD pretty well. But if we need more than CRUD, we need our own application semantics. So protocol semantics at bottom, application semantics at top...</p>
+        <p class="fragment" align="right">How do we fill the gap?</p>
+        </section>
+        <section>
         <p class="fragment" id="fill_the_gap" data-state="fill_the_gap"></p>
         <p><canvas id="semantics_pyramid" width="600" height="600"></canvas></p>
+        </section>
         </section>
 
         <section>
         <h2>HTML</h2>
         <p align="left">Hyper Text Markup Language is the original hypermedia type.</p>
+        <div id="factors" style="width:200px;padding:10px;float:right;clear:both;">
+        <table class="hfactors">
+          <thead>
+            <tr>
+              <th colspan="5"><a href="http://amundsen.com/hypermedia/hfactor/" title="Hypermedia Factors" class="hfactor-link">Hypermedia Factors</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="border cd"><a href="/hypermedia/hfactor/#cl" title="Control Data for Links">CL</a></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="border">CR</td>
+              <td class="border cd"><a href="/hypermedia/hfactor/#cu" title="Control Data for Updates">CU</a></td>
+              <td class="border cd"><a href="/hypermedia/hfactor/#cm" title="Control Data for Interface Methods">CM</a></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="border ld"><a href="/hypermedia/hfactor/#le" title="Embedded Links">LE</a></td>
+              <td class="border ld"><a href="/hypermedia/hfactor/#lo" title="Outbound Links">LO</a></td>
+              <td class="border ld"><a href="/hypermedia/hfactor/#lt" title="Templated Links">LT</a></td>
+              <td class="border ld"><a href="/hypermedia/hfactor/#ln" title="Non-Idempotent Update Links">LN</a></td>
+              <td class="border">LI</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
         <p align="left">Its <b>protocol semantics</b> are limited: PUT and DELETE in HTTP are not supported.</p>
         <p align="left">Its <b>domain semantics</b> are specifically about sharing human readable documents, which is a very popular and very flexible domain. If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider Wikipedia.)</p>
         </section>
 
-        <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-        <h2>Image Backgrounds</h2>
-            <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-        </section>
-        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-        <h2>... and GIFs!</h2>
+        <section data-background="http://www.icxm.net/team/uploads/Misc/1.png">
+            <pre><code>&lt;a href="" rel=""&gt;This is where we will start our API.&lt;/a&gt;</code></pre>
         </section>
 
         <section>
