@@ -81,7 +81,7 @@
         <h2>Is REST new?</h2>
         <p><i>("Just seems like hype to me!")</i></p>
         <h2 class="fragment">No.</h2>
-        <p class="fragment">REST (Representational State Transfer) is merely an academic codification of the architectural constraints that describe the Web.</p>
+        <p class="fragment">REST (<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Representational State Transfer</a>) is merely an academic codification of the architectural constraints that describe the Web.</p>
         </section>
         </section>
 
@@ -98,7 +98,7 @@
         <p>But like, what IS the web???</p>
         <p class="fragment">The web is a distributed computing system.</p>
         <p class="fragment">What do all useful computational systems need to do?</p>
-        <p class="fragment">To my chagrin, they need to manipulate <i>state</i>.</p>
+        <p class="fragment">Manipulate <i>state</i>.</p>
         </section>
 
         <section id="state-kinds">
@@ -108,9 +108,9 @@
           <li>Application state</li>
         </ol>
         <p>How do we make state changes?</p>
-        <p>Representations!</p>
-        <p>(That's why it's called Representational State Transfer. :))</p>
-        <p><a href="#/transition-kinds">How do we represent state transitions on the web?</a></p>
+        <p class="fragment">Representations!</p>
+        <p class="fragment">(That's why it's called Representational State Transfer. :))</p>
+        <p class="fragment"><a href="#/transition-kinds">How do we represent state transitions on the web?</a></p>
         </section>
 
         </section>
@@ -290,11 +290,38 @@
         </section>
 
         <section>
-        <p align="left">Input: current location of user. <br>Output: cars (must have distance to, features, picture of), car keys (allows device to unlock car).</p>
+        <p align="left">Input: current location of user.</p>
+        <p align="left">Output: cars (must have distance to, features, picture of), car keys (allows device to unlock car), reservation invoice (billed amount).</p>
+        <p align="left">Semantic descriptors: current_location, distance_to, features, picture_of, car_keys, reservation_invoice</p>
         </section>
 
         <section>
+        <p align="left">Link relations: search, cars, car, prev/next, back, claim</p>
         <img src="/ZipcarErrandAPI.png">
+        </section>
+
+        <section>
+        <p align="left">Reconcile names:</p>
+        <ul>
+        <li>current_location, distance_to: <a href="https://schema.org/GeoCoordinates">GeoCoordinates</a></li>
+        <li>reservation_invoice: <a href="https://schema.org/Invoice">Invoice</a></li>
+        <li>claim: <a href="https://schema.org/RentalCarReservation">RentalCarReservation</a></li>
+        <li>car: <a href="http://sdo-property-value-and-cars.appspot.com/Car">Car</a></li>
+        <li>cars: <a href="https://schema.org/SearchResultsPage">SearchResultsPage</a></li>
+        </ul>
+        <p class="fragment" align="right"><i>Why</i> reconcile names?</p>
+        <p class="fragment" align="left">Search engines like Google have a vested interest in being able to parse content on the web semantically. Ever received <a href="https://developers.google.com/gmail/markup/">an email that highlighted your upcoming flight</a>?</p>
+        </section>
+
+        <section>
+        <p>That's the power of using <a href="http://schema.org/">Schema.org</a> markup.</p>
+        <img src="carousel-inbox.png">
+        </section>
+
+        <section>
+        <p>What do we need out of a media type?</p>
+        <p class="fragment" align="left">The media type most devs are familiar with is <a href="http://json.org/">JSON</a>, but it is <b>not</b> a hypermedia format.</p>
+        <p class="fragment" align="left">What could a hypermedia format give us out of the box that a vanilla data structure like JSON can't?</p>
         </section>
         </section>
 
