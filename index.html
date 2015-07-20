@@ -157,13 +157,22 @@
 
         <section>
         <p>Meh. Why not just overload POST with everything you need?</p>
-        <p class="fragment" align="left">When you use POST with overloaded semantics, you're limiting yourself to function calls.</p>
+        <p class="fragment" align="left">When you use POST with overloaded semantics, you're limiting yourself to thinking in function calls.</p>
         <p class="fragment" align="left">Your alternative is <a href="http://www.sapphiresteel.com/Tutorials/sapphire-ruby-in-steel-tutorials/Programming/Ruby-The-Smalltalk-Way-1.html">message passing</a>. Does the Web offer that?</p>
         <h2 class="fragment" align="left">Yes.</h2>
         <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages".</p>
-        <p class="fragment" align="left">If you're unconvinced, talk to me later about Smalltalk. :)</p>
         </section>
 
+        <section>
+        <p align="left">What can message passing give us that function calling can't?</p>
+        <p class="fragment" align="left">When a function fails, typically, you just get an error. With message-passing, you can essentially say "well, I didn't understand this message, but could you try sending something like this?"</p>
+        <p class="fragment" align="left">On the web, the server can categorize messages broadly, when we use protocol semantics.</p>
+        </section>
+
+        <section>
+        <p align="left">An example would be handy right about now.</p>
+        <p class="fragment" align="left">For instance, if you want to create something and use POST wrong, the server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        </section>
         </section>
 
         <section>
@@ -253,7 +262,20 @@
         </section>
 
         <section>
+        <section>
         <p>So how do we design a RESTful API?</p>
+        </section>
+        <section>
+        <ol><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Semantic descriptors: list all info a client might have as input/output</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Link relations: Draw a state diagram</span></span></span></p><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);"><small>What do we understand at this point in the process? Protocol semantics.</small></span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Check against existing profiles: can you leverage any?</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Choose a media type</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Write your profile</span></span></span></p><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);"><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Code!!</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Publish the "billboard URL"</span></span></span></p></li></ol>
+        </section>
+
+        <section>
+        <p align="left">Input: current location of user. <br>Output: cars (must have distance to, features, picture of), car keys (allows device to unlock car).</p>
+        </section>
+
+        <section>
+        <img src="/ZipcarErrandAPI.png">
+        </section>
         </section>
 
         <section>
