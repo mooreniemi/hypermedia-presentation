@@ -171,7 +171,26 @@
 
         <section>
         <p align="left">An example would be handy right about now.</p>
-        <p class="fragment" align="left">For instance, if you want to create something and use POST wrong, the server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        <p class="fragment" align="left">For instance, if you want to create something and format your POST request wrong, the server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        </section>
+        <section>
+        <p>Our standard error response:</p>
+        <pre><code>{
+  key: "system_error"
+  message: "An unexpected error has occurred. Please contact support if the problem persists."
+}
+</pre></code>
+        <p>Collection+JSON write template:</p>
+        <pre><code>"template" : {
+      "data" : [
+        {"name" : "full-name", "prompt" : "Full Name"},
+        {"name" : "email", "prompt" : "Email"},
+        {"name" : "blog", "prompt" : "Blog"},
+        {"name" : "avatar", "prompt" : "Avatar"}
+
+      ]
+    }
+</pre></code>
         </section>
         </section>
 
@@ -190,7 +209,7 @@
         <section>
         <h2>HTML</h2>
         <p align="left">Hyper Text Markup Language is the original hypermedia type.</p>
-        <div id="factors" style="width:200px;padding:10px;float:right;clear:both;">
+        <div id="factors" style="width:20%;padding:10px;float:right;clear:both;">
         <table class="hfactors">
           <thead>
             <tr>
@@ -222,8 +241,9 @@
           </tbody>
         </table>
       </div>
-        <p align="left">Its <b>protocol semantics</b> are limited: PUT and DELETE in HTTP are not supported.</p>
-        <p align="left">Its <b>domain semantics</b> are specifically about sharing human readable documents, which is a very popular and very flexible domain. If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider Wikipedia.)</p>
+        <p align="left">Its <b>protocol semantics</b> are limited: <font color="red">PUT and DELETE in HTTP are not supported</font>.</p>
+        <p align="left">Its <b>domain semantics</b> are specifically about sharing <a href="http://www.w3.org/TR/html5/">a network of human readable documents</a>, which is a very popular and very flexible domain.</p>
+        <p align="left">If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider <a href="https://www.wikipedia.org/">Wikipedia</a>.)</p>
         </section>
 
         <section data-background="http://www.icxm.net/team/uploads/Misc/1.png">
@@ -239,7 +259,7 @@
         </section>
 
         <section id="transition-kinds">
-        <p align="left">H-Factors are the categories of state transitions hypermedia can help the client and server format as messages.</p>
+        <p align="left"><a href="http://amundsen.com/hypermedia/hfactor/">H-Factors</a> are the categories of <b>state transitions</b> that hypermedia can help the client and server format as messages.</p>
         <pre><code data-trim contenteditable>
 <img src="http://www.example.org/images/logo" title="company logo" />
 
@@ -266,7 +286,7 @@
         <p>So how do we design a RESTful API?</p>
         </section>
         <section>
-        <ol><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Semantic descriptors: list all info a client might have as input/output</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Link relations: Draw a state diagram</span></span></span></p><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);"><small>What do we understand at this point in the process? Protocol semantics.</small></span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Check against existing profiles: can you leverage any?</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Choose a media type</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Write your profile</span></span></span></p><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);"><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Code!!</span></span></span></p></li><li><p><span class="author notFaded" style="color: rgb(17,17,17);"><span class="contribution"><span class="a-color-secondary" style="color: rgb(85,85,85);">Publish the "billboard URL"</span></span></span></p></li></ol>
+        <ol><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Semantic descriptors: list all info a client might have as input/output</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Link relations: Draw a state diagram</span></span></span></p><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary"><small>What do we understand at this point in the process? Protocol semantics.</small></span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Check against existing profiles: can you leverage any?</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Choose a media type</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Write your profile</span></span></span></p><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary"><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Code!!</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Publish the "billboard URL"</span></span></span></p></li></ol>
         </section>
 
         <section>
