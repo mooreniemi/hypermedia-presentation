@@ -174,7 +174,8 @@
 
         <section>
         <p align="left">For instance, if you want to create something and format your POST request wrong,</p>
-        <p class="fragment" align="left">The server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        <p class="fragment" align="left">The server could inspect your malformed message and reply with a response explaining <i>how</i> to actually create the new resource you were addressing.</p>
+<p class="fragment" align="left"> If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
         </section>
         <section>
         <p>Our standard error response:</p>
@@ -200,10 +201,17 @@
         <section>
         <section>
         <p align="left">Protocol semantics help define the control flow of our application, but they would be a pretty weak application on their own.</p>
-        <p align="left" class="fragment">The application semantics of the protocol map to CRUD pretty well. But if we need more than CRUD, we need our own application semantics. So protocol semantics at bottom, application semantics at top...</p>
-        <p class="fragment" align="right">How do we fill the gap?</p>
+        <table>
+        <tr><td>POST</td><td>Create</td></tr>
+        <tr><td>GET</td><td>Read</td></tr>
+        <tr><td>PUT</td><td>Update</td></tr>
+        <tr><td>PATCH</td><td></td></tr>
+        <tr><td>DELETE</td><td>Delete</td></tr>
+        </table>
+        <p align="left" class="fragment">If we need more than CRUD, we need our own application semantics. So protocol semantics at bottom, application semantics at top...</p>
         </section>
         <section>
+        <p class="fragment" align="right">How do we fill the gap?</p>
         <p class="fragment" id="fill_the_gap" data-state="fill_the_gap"></p>
         <p><canvas id="semantics_pyramid" width="600" height="600"></canvas></p>
         </section>
