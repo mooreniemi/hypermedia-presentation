@@ -340,11 +340,50 @@
         <p>That's the power of using <a href="http://schema.org/">Schema.org</a> markup.</p>
         <img src="carousel-inbox.png">
         </section>
+        </section>
 
         <section>
+        <section>
         <p>What do we need out of a media type?</p>
-        <p class="fragment" align="left">The media type most devs are familiar with is <a href="http://json.org/">JSON</a>, but it is <b>not</b> a hypermedia format.</p>
+        <p class="fragment">Protocol semantics, or, a way for the client to figure out: what kind of requests can I make, and how do I make them?</p>
+        </section>
+        <section>
+        <pre><code>[
+  {
+    "account_billing_info_id": 5639575,
+    "account_id": 123456789,
+    "last_four": "1111",
+    "credit_card_type": "vi",
+    "account_holder_name": "Suzanne Job",
+    "primary": true,
+    "expiration_month": "02",
+    "expiration_year": "2019",
+    "address_line_one": "35 Thomson place,",
+    "address_line_two": "Apt No-105",
+    "mumciplaity": "boston",
+    "region": "Massachusetts",
+    "country": "US"
+  }
+]</code></pre>
+        <p class="fragment" align="left">The media type most devs are familiar with is <a href="http://json.org/">JSON</a>, but it is <b>not</b> a <i>hyper</i>media format.</p>
         <p class="fragment" align="left">What could a hypermedia format give us out of the box that a vanilla data structure like JSON can't?</p>
+        </section>
+        <section>
+        <p>As a client, how do I make a request to find <i>x</i>?</p>
+        <pre><code>"queries" : [
+      {"rel" : "search", "href" : "http://example.org/friends/search", "prompt" : "Search",
+        "data" : [
+          {"name" : "search", "value" : ""}
+        ]
+      }
+    ],</pre></code>
+        <pre><code data-trim contenteditable>
+<form method="get">
+  <label>Search term:</label>
+  <input name="query" type="text" value="" />
+  <input type="submit" />
+</form>
+</code></pre>
         </section>
         </section>
 
