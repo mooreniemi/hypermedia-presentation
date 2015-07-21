@@ -65,12 +65,6 @@
         </section>
 
         <section>
-        <p>The running example of this presentation?</p>
-        <p>ZipErrands API</p>
-        <p align="left">Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
-        </section>
-
-        <section>
         <section>
         <h2>Why build RESTful Web APIs?</h2>
         <p class="fragment">Constraints restrict complexity.</p>
@@ -94,11 +88,11 @@
         <p class="fragment">It satisfies one of the <i>optional</i> constraints in REST: "Mobile Code On Demand".</p>
         </section>
 
-        <section>
-        <p>But like, what IS the web???</p>
-        <p class="fragment">The web is a distributed computing system.</p>
-        <p class="fragment">What do all useful computational systems need to do?</p>
-        <p class="fragment">Manipulate <i>state</i>.</p>
+        <section data-background="raptor_blur.jpg">
+        <p style="color:white;">But like, what <i>IS</i> the web???</p>
+        <p style="color:white;" class="fragment">The web is a distributed computing system.</p>
+        <p style="color:white;" class="fragment">What do all useful computational systems need to do?</p>
+        <p style="color:white;" class="fragment">Manipulate <i>state</i>.</p>
         </section>
 
         <section id="state-kinds">
@@ -165,13 +159,22 @@
 
         <section>
         <p align="left">What can message passing give us that function calling can't?</p>
-        <p class="fragment" align="left">When a function fails, typically, you just get an error. With message-passing, you can essentially say "well, I didn't understand this message, but could you try sending something like this?"</p>
-        <p class="fragment" align="left">On the web, the server can categorize messages broadly, when we use protocol semantics.</p>
+        <p class="fragment" align="left">When a <i>function</i> fails, typically, it only knows how to return an error. Alternatively, a <i>message</i> is passed to an <i>object</i>, which is free to reply, "well, I didn't understand this message, but could you try sending something like this?"</p>
+        <p class="fragment" align="left">On the web, the server can categorize messages more <i>meaningfully</i>, when we use protocol semantics.</p>
         </section>
 
         <section>
-        <p align="left">An example would be handy right about now.</p>
-        <p class="fragment" align="left">For instance, if you want to create something and format your POST request wrong, the server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        <blockquote>The key in making great and growable systems is much more to design how its modules communicate rather than what their internal properties and behaviors should be. Think of the internet - to live, it (a) has to allow many different kinds of ideas and realizations that are beyond any single standard and (b) to allow varying degrees of safe interoperability between these ideas. </blockquote>
+        </section>
+
+        <section>
+        <blockquote>If you focus on just messaging - and realize that a good metasystem can late bind the various 2nd level architectures used in objects - then much of the language-, UI-, and OS based discussions on this thread are really quite moot.</blockquote>
+        <p>Alan Kay (inventor of Smalltalk), <a href="http://c2.com/cgi/wiki?AlanKayOnMessaging">on messaging</a></p>
+        </section>
+
+        <section>
+        <p align="left">For instance, if you want to create something and format your POST request wrong,</p>
+        <p class="fragment" align="left">The server could inspect your malformed message and reply with a response explaining how to actually create a new resource. If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
         </section>
         <section>
         <p>Our standard error response:</p>
@@ -210,37 +213,37 @@
         <h2>HTML</h2>
         <p align="left">Hyper Text Markup Language is the original hypermedia type.</p>
         <div id="factors" style="width:20%;padding:10px;float:right;clear:both;">
-        <table class="hfactors">
-          <thead>
-            <tr>
-              <th colspan="5"><a href="http://amundsen.com/hypermedia/hfactor/" title="Hypermedia Factors" class="hfactor-link">Hypermedia Factors</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td class="border cd"><a href="/hypermedia/hfactor/#cl" title="Control Data for Links">CL</a></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="border">CR</td>
-              <td class="border cd"><a href="/hypermedia/hfactor/#cu" title="Control Data for Updates">CU</a></td>
-              <td class="border cd"><a href="/hypermedia/hfactor/#cm" title="Control Data for Interface Methods">CM</a></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="border ld"><a href="/hypermedia/hfactor/#le" title="Embedded Links">LE</a></td>
-              <td class="border ld"><a href="/hypermedia/hfactor/#lo" title="Outbound Links">LO</a></td>
-              <td class="border ld"><a href="/hypermedia/hfactor/#lt" title="Templated Links">LT</a></td>
-              <td class="border ld"><a href="/hypermedia/hfactor/#ln" title="Non-Idempotent Update Links">LN</a></td>
-              <td class="border">LI</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <table class="hfactors">
+            <thead>
+              <tr>
+                <th colspan="5"><a href="http://amundsen.com/hypermedia/hfactor/" title="Hypermedia Factors" class="hfactor-link">Hypermedia Factors</a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td class="border cd"><a href="/hypermedia/hfactor/#cl" title="Control Data for Links">CL</a></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="border">CR</td>
+                <td class="border cd"><a href="/hypermedia/hfactor/#cu" title="Control Data for Updates">CU</a></td>
+                <td class="border cd"><a href="/hypermedia/hfactor/#cm" title="Control Data for Interface Methods">CM</a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="border ld"><a href="/hypermedia/hfactor/#le" title="Embedded Links">LE</a></td>
+                <td class="border ld"><a href="/hypermedia/hfactor/#lo" title="Outbound Links">LO</a></td>
+                <td class="border ld"><a href="/hypermedia/hfactor/#lt" title="Templated Links">LT</a></td>
+                <td class="border ld"><a href="/hypermedia/hfactor/#ln" title="Non-Idempotent Update Links">LN</a></td>
+                <td class="border">LI</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <p align="left">Its <b>protocol semantics</b> are limited: <font color="red">PUT and DELETE in HTTP are not supported</font>.</p>
         <p align="left">Its <b>domain semantics</b> are specifically about sharing <a href="http://www.w3.org/TR/html5/">a network of human readable documents</a>, which is a very popular and very flexible domain.</p>
         <p align="left">If your application matches that domain 1:1, you're all set: HTML has you covered. (Consider <a href="https://www.wikipedia.org/">Wikipedia</a>.)</p>
@@ -254,7 +257,7 @@
         <section>
         <h2>Hypermedia</h2>
         <blockquote>
-         "a way for the server to tell the client what HTTP requests the client might want to make in the future"
+          "a way for the server to tell the client what HTTP requests the client might want to make in the future"
         </blockquote>
         </section>
 
@@ -290,6 +293,11 @@
         </section>
 
         <section>
+        <p align="left">ZipErrands API</p>
+        <p align="left">Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
+        </section>
+
+        <section>
         <p align="left">Input: current location of user.</p>
         <p align="left">Output: cars (must have distance to, features, picture of), car keys (allows device to unlock car), reservation invoice (billed amount).</p>
         <p align="left">Semantic descriptors: current_location, distance_to, features, picture_of, car_keys, reservation_invoice</p>
@@ -303,11 +311,11 @@
         <section>
         <p align="left">Reconcile names:</p>
         <ul>
-        <li>current_location, distance_to: <a href="https://schema.org/GeoCoordinates">GeoCoordinates</a></li>
-        <li>reservation_invoice: <a href="https://schema.org/Invoice">Invoice</a></li>
-        <li>claim: <a href="https://schema.org/RentalCarReservation">RentalCarReservation</a></li>
-        <li>car: <a href="http://sdo-property-value-and-cars.appspot.com/Car">Car</a></li>
-        <li>cars: <a href="https://schema.org/SearchResultsPage">SearchResultsPage</a></li>
+          <li>current_location, distance_to: <a href="https://schema.org/GeoCoordinates">GeoCoordinates</a></li>
+          <li>reservation_invoice: <a href="https://schema.org/Invoice">Invoice</a></li>
+          <li>claim: <a href="https://schema.org/RentalCarReservation">RentalCarReservation</a></li>
+          <li>car: <a href="http://sdo-property-value-and-cars.appspot.com/Car">Car</a></li>
+          <li>cars: <a href="https://schema.org/SearchResultsPage">SearchResultsPage</a></li>
         </ul>
         <p class="fragment" align="right"><i>Why</i> reconcile names?</p>
         <p class="fragment" align="left">Search engines like Google have a vested interest in being able to parse content on the web semantically. Ever received <a href="https://developers.google.com/gmail/markup/">an email that highlighted your upcoming flight</a>?</p>
