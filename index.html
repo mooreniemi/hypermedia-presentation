@@ -345,7 +345,8 @@
         <section>
         <section>
         <p>What do we need out of a media type?</p>
-        <p class="fragment">Protocol semantics, or, a way for the client to figure out: what kind of requests can I make, and how do I make them?</p>
+        <p class="fragment">A way for the client to figure out: what kind of requests can I make, and how do I make them?</p>
+        <h2 class="fragment">Protocol semantics</h2>
         </section>
         <section>
         <pre><code>[
@@ -383,6 +384,40 @@
   <input name="query" type="text" value="" />
   <input type="submit" />
 </form>
+</code></pre>
+        </section>
+        <section>
+        <p>As a client, how do I make a request to find <i>ys related to x</i>?</p>
+        <pre><code>HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+{
+  "data": [{
+    "type": "articles",
+    "id": "1",
+    "attributes": {
+      "title": "JSON API paints my bikeshed!",
+      "body": "The shortest article. Ever."
+    },
+    "relationships": {
+      "author": {
+        "data": {"id": 42, "type": "people"}
+      }
+    }
+  }],
+  "included": [
+    {
+      "type": "people",
+      "id": 42,
+      "attributes": {
+        "name": "John"
+      }
+    }
+  ]
+}</code></pre>
+        <pre><code data-trim contenteditable>
+HTTP/1.1 200 OK
+Content-Type: application/atom+xml
+<link href="http://www.example.org/data/q1w2e3r4" rel="related" hreflang="en" />
 </code></pre>
         </section>
         </section>
