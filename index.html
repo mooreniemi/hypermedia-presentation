@@ -159,8 +159,8 @@
 
         <section>
         <p align="left">What can message passing give us that function calling can't?</p>
-        <p class="fragment" align="left">When a <i>function</i> fails, typically, it only knows how to return an error. Alternatively, a <i>message</i> is passed to an <i>object</i>, which is free to reply, "well, I didn't understand this message, but could you try sending something like this?"</p>
-        <p class="fragment" align="left">On the web, the server can categorize messages more <i>meaningfully</i>, when we use protocol semantics.</p>
+        <p class="fragment" align="left">When a <i>function</i> fails, typically, it only knows how to return an error. Alternatively, a <i>message</i> is passed to an <i>object</i>, which is free to reply, "well, I didn't understand this message, but how about..?"</p>
+        <p class="fragment" align="left">On the web, the server can categorize messages more <i>meaningfully</i>, when we use protocol semantics, which helps us create more meaingful responses to the client.</p>
         </section>
 
         <section>
@@ -175,7 +175,7 @@
         <section>
         <p align="left">For instance, if you want to create something and format your POST request wrong,</p>
         <p class="fragment" align="left">The server could inspect your malformed message and reply with a response explaining <i>how</i> to actually create the new resource you were addressing.</p>
-<p class="fragment" align="left"> If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
+        <p class="fragment" align="left"> If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
         </section>
         <section>
         <p>Our standard error response:</p>
@@ -202,11 +202,11 @@
         <section>
         <p align="left">Protocol semantics help define the control flow of our application, but they would be a pretty weak application on their own.</p>
         <table>
-        <tr><td>POST</td><td>Create</td></tr>
-        <tr><td>GET</td><td>Read</td></tr>
-        <tr><td>PUT</td><td>Update</td></tr>
-        <tr><td>PATCH</td><td></td></tr>
-        <tr><td>DELETE</td><td>Delete</td></tr>
+          <tr><td>POST</td><td>Create</td></tr>
+          <tr><td>GET</td><td>Read</td></tr>
+          <tr><td>PUT</td><td>Update</td></tr>
+          <tr><td>PATCH</td><td></td></tr>
+          <tr><td>DELETE</td><td>Delete</td></tr>
         </table>
         <p align="left" class="fragment">If we need more than CRUD, we need our own application semantics. So protocol semantics at bottom, application semantics at top...</p>
         </section>
@@ -297,7 +297,14 @@
         <p>So how do we design a RESTful API?</p>
         </section>
         <section>
-        <ol><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Semantic descriptors: list all info a client might have as input/output</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Link relations: Draw a state diagram</span></span></span></p><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary"><small>What do we understand at this point in the process? Protocol semantics.</small></span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Check against existing profiles: can you leverage any?</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Choose a media type</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Write your profile</span></span></span></p><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary"><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Code!!</span></span></span></p></li><li><p><span class="author notFaded"><span class="contribution"><span class="a-color-secondary">Publish the "billboard URL"</span></span></span></p></li></ol>
+        <ol><li><p><span>Semantic descriptors: list all info a client might have as input/output</span></p></li>
+          <li><p><span>Link relations: Draw a state diagram</span></p><p><span><small>What do we understand at this point in the process? Protocol semantics.</small></span></p></li>
+          <li><p><span>Check against existing profiles: can you leverage any?</span></p></li>
+          <li><p><span>Choose a media type</span></p></li>
+          <li><p><span>Write your profile of your application semantics</span></p><p><span><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></p></li>
+          <li><p><span style="color:grey;">Code!!</span></p></li>
+          <li><p><span style="color:grey;">Publish the "billboard URL"</span></p></li>
+        </ol>
         </section>
 
         <section>
