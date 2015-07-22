@@ -395,18 +395,19 @@
   "telephone": "(425) 123-4567",
   "url": "http://www.janedoe.com"
 }
-</script>
-        </code></pre>
+</script></code></pre>
         </section>
         <section>
         <p>As a client, how do I make a request to find <i>x</i>?</p>
         <pre><code>"queries" : [
-      {"rel" : "search", "href" : "http://example.org/friends/search", "prompt" : "Search",
-        "data" : [
+  {
+    "rel" : "search", "href" : "http://example.org/friends/search",
+    "prompt" : "Search",
+    "data" : [
           {"name" : "search", "value" : ""}
-        ]
-      }
-    ],</pre></code>
+    ]
+  }
+],</pre></code>
         <pre><code data-trim contenteditable>
 <form method="get">
   <label>Search term:</label>
