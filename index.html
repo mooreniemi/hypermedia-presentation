@@ -72,6 +72,15 @@
         <p class="fragment">Ubiquitous support.</p>
         </section>
         <section>
+        <h2>REST has 4 constraints</h2>
+        <ul>
+          <li>identification of resources</li>
+          <li>manipulation of resources through representations</li>
+          <li>self-descriptive messages</li>
+          <li>hypermedia as the engine of application state</li>
+        </ul>
+        </section>
+        <section>
         <h2>Is REST new?</h2>
         <p><i>("Just seems like hype to me!")</i></p>
         <h2 class="fragment">No.</h2>
@@ -525,15 +534,16 @@ Content-Type: application/atom+xml
         <section>
         <h2>tl;dr</h2>
         <ul>
-          <li>The Web is a distributed computing system that relies on message passing.</li>
-          <li>To modify state, you send representations.</li>
-          <li>These representations should be self-describing, <span>so that the client never needs out-of-band information to make its next request.</span></li>
-          <li>Work from the state transitions, not from the resources underneath.</li>
-          <li>Design from representations of state change, not from the object whose state will change.</li>
-          <li>Leverage the work of your community, and be <b>proud</b> of contributing to that community.</li>
+          <li class="fragment">The Web is a distributed computing system that relies on message passing.</li>
+          <li class="fragment"><a href="http://restful-api-design.readthedocs.org/en/latest/resources.html">Resources</a> have unique, addressable identifiers.</li>
+          <li class="fragment">To modify the state of a resource, you send <a href="http://restful-api-design.readthedocs.org/en/latest/resources.html#representations">representations</a>. (Messages.)</li>
+          <li class="fragment">These representations should be self-describing, <span class="fragment">so that the client never needs out-of-band information to make its next request.</span></li>
+          <li class="fragment">Work from the state transitions, <b>not</b> from the resources underneath. <span class="fragment">Design from representations of state change, <b>not</b> from the object whose state will change.</li>
         </ul>
         </section>
-
+        <section>
+          <p>Leverage the work of your community, and be <b>proud</b> of contributing to that community.</p>
+        </section>
       </div>
 
     </div>
