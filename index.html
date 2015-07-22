@@ -154,7 +154,7 @@
         <p class="fragment" align="left">When you use POST with overloaded semantics, you're limiting yourself to thinking in function calls.</p>
         <p class="fragment" align="left">Your alternative is <a href="http://www.sapphiresteel.com/Tutorials/sapphire-ruby-in-steel-tutorials/Programming/Ruby-The-Smalltalk-Way-1.html">message passing</a>. Does the Web offer that?</p>
         <h2 class="fragment" align="left">Yes.</h2>
-        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages".</p>
+        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages", because the web <b>requires</b> a message passing style as its distributed model.</p>
         </section>
 
         <section>
@@ -211,11 +211,13 @@
         <p align="left" class="fragment">If we need more than CRUD, we need our own application semantics. So protocol semantics at bottom, application semantics at top...</p>
         </section>
         <section>
+        <p align="left">Between "the HTTP request necessary to trigger a state transition" and "the purpose of the state transition"...</p>
         <p class="fragment" align="right">How do we fill the gap?</p>
         <p class="fragment" id="fill_the_gap" data-state="fill_the_gap"></p>
         <p><canvas id="semantics_pyramid" width="600" height="600"></canvas></p>
         </section>
         </section>
+        <!-- talk about Gopher here? -->
 
         <section>
         <h2>HTML</h2>
@@ -270,7 +272,7 @@
         </section>
 
         <section id="transition-kinds">
-        <p align="left"><a href="http://amundsen.com/hypermedia/hfactor/">H-Factors</a> are the categories of <b>state transitions</b> that hypermedia can help the client and server format as messages.</p>
+        <p align="left"><a href="http://amundsen.com/hypermedia/hfactor/">H-Factors</a> are the categories of <b>state transitions</b> that hypermedia can help the client and server format as representations (messages).</p>
         <pre><code data-trim contenteditable>
 <img src="http://www.example.org/images/logo" title="company logo" />
 
@@ -345,7 +347,7 @@
         <section>
         <section>
         <p>What do we need out of a media type?</p>
-        <p class="fragment">A way for the client to figure out: what kind of requests can I make, and how do I make them?</p>
+        <p class="fragment">A way for the client to figure out: what kind of requests can I make, how do I make them, and <i>why</i> would I want to make them?</p>
         <h2 class="fragment">Protocol semantics</h2>
         </section>
         <section>
@@ -368,6 +370,33 @@
 ]</code></pre>
         <p class="fragment" align="left">The media type most devs are familiar with is <a href="http://json.org/">JSON</a>, but it is <b>not</b> a <i>hyper</i>media format.</p>
         <p class="fragment" align="left">What could a hypermedia format give us out of the box that a vanilla data structure like JSON can't?</p>
+        </section>
+        <section>
+        <p>As a client, how do I interpret <i>x</i>?</p>
+        <pre><code><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seattle",
+    "addressRegion": "WA",
+    "postalCode": "98052",
+    "streetAddress": "20341 Whitworth Institute 405 N. Whitworth"
+  },
+  "colleague": [
+    "http://www.xyz.edu/students/alicejones.html",
+    "http://www.xyz.edu/students/bobsmith.html"
+  ],
+  "email": "mailto:jane-doe@xyz.edu",
+  "image": "janedoe.jpg",
+  "jobTitle": "Professor",
+  "name": "Jane Doe",
+  "telephone": "(425) 123-4567",
+  "url": "http://www.janedoe.com"
+}
+</script>
+        </code></pre>
         </section>
         <section>
         <p>As a client, how do I make a request to find <i>x</i>?</p>
@@ -420,10 +449,77 @@ Content-Type: application/atom+xml
 <link href="http://www.example.org/data/q1w2e3r4" rel="related" hreflang="en" />
 </code></pre>
         </section>
+        <section>
+        <p>When we give a standardized interface to the client, we don't need as many clients.</p>
+        </section>
         </section>
 
         <section>
+        <p>Obligatory <a href="https://schema.org/RentalCarReservation">RentalCarReservation</a> example.</p>
+        <pre><code><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "RentalCarReservation",
+  "reservationId": "546323",
+  "reservationStatus": "http://schema.org/ReservationConfirmed",
+  "underName": {
+    "@type": "Person",
+    "name": "John Smith"
+  },
+  "reservationFor": {
+    "@type": "Car",
+    "name": "Economy Class Car",
+    "model": "Civic",
+    "brand": {
+      "@type": "Brand",
+      "name": "Honda"
+    },
+    "operatingCompany": {
+      "@type": "Organization",
+      "name": "Hertz"
+    }
+  },
+  "pickupLocation": {
+    "@type": "Place",
+    "name": "Hertz San Diego Airport",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1500 Orange Avenue",
+      "addressLocality": "San Diego",
+      "addressRegion": "CA",
+      "postalCode": "94043",
+      "addressCountry": "US"
+    }
+  },
+  "pickupTime": "2017-08-05T16:00:00-07:00",
+  "dropoffLocation": {
+    "@type": "Place",
+    "name": "Hertz LAX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1234 First Street",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "94043",
+      "addressCountry": "US"
+    }
+  },
+  "dropoffTime": "2017-08-06T20:00:00-07:00"
+}
+</script></code></pre>
+        </section>
+
+        <section>
+        <section>
         <p>What tools out there can we use to help us?</p>
+        </section>
+        <section>
+        <ul>
+          <li>Schema.org</li>
+          <li>GoodRelations</li>
+          <li>HypermediaWeb</li>
+        </ul>
+        </section>
         </section>
 
       </div>
