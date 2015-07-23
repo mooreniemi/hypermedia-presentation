@@ -32,6 +32,48 @@
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
+    <style>
+.bubble
+{
+position: relative;
+width: 100%;
+height: 10%;
+padding: 20px !important;
+background: #F0F0F5;
+-webkit-border-radius: 18px !important;
+-moz-border-radius: 18px !important;
+border-radius: 18px !important;
+border: #7F7F7F solid 4px !important;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0 15px 35px;
+border-color: transparent #F0F0F5;
+display: block;
+width: 0;
+z-index: 1;
+right: -35px;
+top: 45px;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 18px 0 18px 38px;
+border-color: transparent #7F7F7F;
+display: block;
+width: 0;
+z-index: 0;
+right: -42px;
+top: 42px;
+}
+    </style>
   </head>
 
   <body>
@@ -131,9 +173,9 @@
         </section>
         <section>
         <p>If we approach the "Web" as libraries we can use, what do we get out of the box?</p>
-        <h2 class="fragment">Protocol semantics.</h2>
-        <h2 class="fragment">Domain semantics.</h2>
-        <h2 class="fragment">Application semantics.</h2>
+        <h2 class="fragment" style="color: #FF0066;">Protocol semantics.</h2>
+        <h2 class="fragment" style="color: #FF99C2;">Domain semantics.</h2>
+        <h2 class="fragment" style="color: #FFCCE0;">Application semantics.</h2>
         </section>
         </section>
 
@@ -148,28 +190,28 @@
         </section>
         <section>
         <ul>
-          <li>RFC 7230, HTTP/1.1: Message Syntax and Routing</li>
-          <li>RFC 7231, HTTP/1.1: Semantics and Content</li>
-          <li>RFC 7232, HTTP/1.1: Conditional Requests</li>
-          <li>RFC 7233, HTTP/1.1: Range Requests</li>
-          <li>RFC 7234, HTTP/1.1: Caching</li>
-          <li>RFC 7235, HTTP/1.1: Authentication</li>
+          <li><a href="https://tools.ietf.org/html/rfc7230">RFC 7230</a>, HTTP/1.1: Message Syntax and Routing</li>
+            <li><a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a>, HTTP/1.1: Semantics and Content</li>
+              <li><a href="https://tools.ietf.org/html/rfc7232">RFC 7232</a>, HTTP/1.1: Conditional Requests</li>
+                <li><a href="https://tools.ietf.org/html/rfc7233">RFC 7233</a>, HTTP/1.1: Range Requests</li>
+                  <li><a href="https://tools.ietf.org/html/rfc7234">RFC 7234</a>, HTTP/1.1: Caching</li>
+            <li><a href="https://tools.ietf.org/html/rfc7235">RFC 7235</a>, HTTP/1.1: Authentication</li>
         </ul>
-        <p>HTTP/2 was published as RFC 7540 in May 2015.</p>
+        <p>HTTP/2 was published as <a href="https://tools.ietf.org/html/rfc7540">RFC 7540</a> in May 2015.</p>
         </section>
 
         <section>
-        <p>Meh. Why not just overload POST with everything you need?</p>
+        <p class="bubble">Meh. Why not just overload POST with everything you need?</p>
         <p class="fragment" align="left">When you use POST with overloaded semantics, you're limiting yourself to thinking in function calls.</p>
         <p class="fragment" align="left">Your alternative is <a href="http://www.sapphiresteel.com/Tutorials/sapphire-ruby-in-steel-tutorials/Programming/Ruby-The-Smalltalk-Way-1.html">message passing</a>. Does the Web offer that?</p>
         <h2 class="fragment" align="left">Yes.</h2>
-        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages", because the web <b>requires</b> a message passing style as its distributed model.</p>
+        <p class="fragment" align="left">One of the Fielding constraints of REST is "self-describing messages", because the web <b>requires</b> a message passing style for its distributed model.</p>
         </section>
 
         <section>
-        <p align="left">What can message passing give us that function calling can't?</p>
-        <p class="fragment" align="left">When a <i>function</i> fails, typically, it only knows how to return an error. Alternatively, a <i>message</i> is passed to an <i>object</i>, which is free to reply, "well, I didn't understand this message, but how about..?"</p>
-        <p class="fragment" align="left">On the web, the server can categorize messages more <i>meaningfully</i>, when we use protocol semantics, which helps us create more meaingful responses to the client.</p>
+        <p align="left" class="bubble">What can message passing give us that function calling can't?</p>
+        <p class="fragment" align="left">Formally, they're equivalent. But if you expose functions, you've exposed method signatures, which couple your client's implementation to yours directly.</p>
+        <p class="fragment" align="left">Instead we want to think declaratively: send a message of the desired state change, don't ask for a specific function to handle it.</p>
         </section>
 
         <section>
@@ -182,8 +224,7 @@
         </section>
 
         <section>
-        <p align="left">For instance, if you want to create something and format your POST request wrong,</p>
-        <p class="fragment" align="left">The server could inspect your malformed message and reply with a response explaining <i>how</i> to actually create the new resource you were addressing.</p>
+        <p align="left">For instance, if you want to create something and format your POST request wrong, <span class="fragment" align="left">the server could inspect your malformed message and reply with a response explaining <i>how</i> to actually create the new resource you were addressing.</span></p>
         <p class="fragment" align="left"> If you're POST'ing essentially to just an undefined function (RPC-style) the server can't do any better than say "this doesn't exist in my namespace. :c"</p>
         </section>
         <section>
@@ -195,14 +236,13 @@
 </pre></code>
         <p>Collection+JSON write template:</p>
         <pre><code>"template" : {
-      "data" : [
-        {"name" : "full-name", "prompt" : "Full Name"},
-        {"name" : "email", "prompt" : "Email"},
-        {"name" : "blog", "prompt" : "Blog"},
-        {"name" : "avatar", "prompt" : "Avatar"}
-
-      ]
-    }
+  "data" : [
+     {"name" : "full-name", "prompt" : "Full Name"},
+     {"name" : "email", "prompt" : "Email"},
+     {"name" : "blog", "prompt" : "Blog"},
+     {"name" : "avatar", "prompt" : "Avatar"}
+   ]
+}
 </pre></code>
         </section>
         </section>
@@ -309,13 +349,14 @@
         </section>
         <section>
         <ol><li><p><span>Semantic descriptors: list all info a client might have as input/output</span></p></li>
-          <li><p><span>Link relations: Draw a state diagram</span></p><p><span><small>What do we understand at this point in the process? Protocol semantics.</small></span></p></li>
+          <li><p><span>Link relations: Draw a state diagram</span></p></li>
           <li><p><span>Check against existing profiles: can you leverage any?</span></p></li>
           <li><p><span>Choose a media type</span></p></li>
           <li><p><span>Write your profile of your application semantics</span></p><p><span><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></p></li>
           <li style="color:grey;"><p><span style="color:grey;">Code!!</span></p></li>
           <li style="color:grey;"><p><span style="color:grey;">Publish the "billboard URL"</span></p></li>
         </ol>
+        <small><p><a href="https://books.google.com/books?id=wWnGAAAAQBAJ&lpg=PA146&ots=FfcpzHY94a&dq=%22semantic%20descriptors%22%20amundsen&pg=PA158#v=onepage&q&f=false">7 Step Design Procedure</a> from <a href="http://www.amazon.com/RESTful-Web-APIs-Leonard-Richardson/dp/1449358063">RESTful Web APIs</a> by Leonard Richardson, Mike Amundsen, Sam Ruby</p></small>
         </section>
 
         <section>
@@ -324,18 +365,18 @@
         </section>
 
         <section>
-        <p align="left">Input: current location of user.</p>
-        <p align="left">Output: cars (must have distance to, features, picture of), car keys (allows device to unlock car), reservation invoice (billed amount).</p>
-        <p align="left">Semantic descriptors: current_location, distance_to, features, picture_of, car_keys, reservation_invoice</p>
+        <p align="left"><b>Input</b>: current location of user.</p>
+        <p align="left"><b>Output</b>: cars (must have distance to, features, picture of), car keys (allows device to unlock car), reservation invoice (billed amount).</p>
+        <p align="left"><b>Semantic descriptors</b>: current_location, distance_to, features, picture_of, car_keys, reservation_invoice</p>
         </section>
 
         <section>
-        <p align="left">Link relations: search, cars, car, prev/next, back, claim</p>
+        <p align="left"><b>Link relations</b>: search, cars, car, prev/next, back, claim</p>
         <img src="/ZipcarErrandAPI.png">
         </section>
 
         <section>
-        <p align="left">Reconcile names:</p>
+        <p align="left"><b>Reconcile names</b>:</p>
         <ul>
           <li>current_location, distance_to: <a href="https://schema.org/GeoCoordinates">GeoCoordinates</a></li>
           <li>reservation_invoice: <a href="https://schema.org/Invoice">Invoice</a></li>
@@ -356,8 +397,9 @@
         <section>
         <section>
         <p>What do we need out of a media type?</p>
-        <p class="fragment">A way for the client to figure out: what kind of requests can I make, how do I make them, and <i>why</i> would I want to make them?</p>
-        <h2 class="fragment">Protocol semantics</h2>
+        <p class="fragment">A way for the client to figure out: <span style="color:#7070DB;" class="fragment">what kind of requests can I make<span>, <span style="color:#5A5AAF;" class="fragment">how do I make them,</span><span style="color:#363669;" class="fragment"> and <i>why</i> would I want to make them?</span></p>
+        <h2 class="fragment">worst case: Protocol Semantics</h2>
+        <h2 class="fragment">best case: Application Semantics</h2>
         </section>
         <section>
         <pre><code>[
@@ -460,7 +502,7 @@ Content-Type: application/atom+xml
 </code></pre>
         </section>
         <section>
-        <p>When we give a standardized interface to the client, we don't need as many clients.</p>
+        <p>When we give a uniform (standardized) interface to the client, we don't need as many clients.</p>
         </section>
         </section>
 
