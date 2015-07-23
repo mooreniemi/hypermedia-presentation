@@ -82,11 +82,11 @@ top: 42px;
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
-        <h1>RESTful Web APIs</h1>
-        <h3>& the hypermedia constraint</h3>
-        <p>
-        <small>By <a href="https://twitter.com/feminstwerewolf">Alex Moore-Niemi</a></small>
+        <section data-background="big-sloth.jpg">
+        <h1 style="background-color:rgba(255, 255, 0, 0.5);">RESTful Web APIs</h1>
+        <h3 style="background-color:rgba(255, 0, 102, 0.5);">& the hypermedia constraint</h3>
+        <p style="background-color:rgba(0, 255, 255, 0.5);">
+        <a href="https://twitter.com/feminstwerewolf" style="color:black;">Alex Moore-Niemi</a>
         </p>
         </section>
 
@@ -124,9 +124,9 @@ top: 42px;
         </section>
         <section>
         <h2>Is REST new?</h2>
-        <p><i>("Just seems like hype to me!")</i></p>
+        <p class="bubble"><i>*muttering* Just seems like hype to me!</i></p>
         <h2 class="fragment">No.</h2>
-        <p class="fragment">REST (<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Representational State Transfer</a>) is merely an academic codification of the architectural constraints that describe the Web.</p>
+        <p class="fragment" align="left">REST (<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Representational State Transfer</a>) is merely an academic codification of the architectural constraints that describe the Web.</p>
         </section>
         </section>
 
@@ -135,8 +135,8 @@ top: 42px;
         <p>
         HTTP, URLs, and HTML.
         </p>
-        <p class="fragment"><i>Pssst.</i> What about Javascript?</p>
-        <p class="fragment">It satisfies one of the <i>optional</i> constraints in REST: "Mobile Code On Demand".</p>
+        <p class="fragment bubble"><i>Pssst.</i> What about Javascript?</p>
+        <p class="fragment" align="left">It satisfies one of the <i>optional</i> constraints in REST: "Mobile Code On Demand".</p>
         </section>
 
         <section data-background="raptor_blur.jpg">
@@ -185,7 +185,7 @@ top: 42px;
         <blockquote class="fragment">"the set of rules regarding how to fashion valid requests and responses using one or more message protocols"</blockquote>
         </section>
         <section>
-        <p>Yeah, yeah yeah... I've seen POST, PUT, DELETE, etc...</p>
+        <p class="bubble">Yeah, yeah yeah... I've seen POST, PUT, DELETE, etc...</p>
         <p class="fragment">HTTP alone has a lot more semantics than you might think.</p>
         </section>
         <section>
@@ -344,24 +344,24 @@ top: 42px;
         </section>
 
         <section>
-        <section>
-        <p>So how do we design a RESTful API?</p>
+        <section data-background="baby-sloth.jpg">
+        <p style="background-color:rgba(0, 0, 0, 0.7); color:white;">So how do we <a href="http://www.slideshare.net/rnewton/api-design-methodology-mike-amundsen-director-of-api-architecture-api-academy-apidays-sydney">design a RESTful API</a>? (In brief.)</p>
         </section>
         <section>
-        <ol><li><p><span>Semantic descriptors: list all info a client might have as input/output</span></p></li>
-          <li><p><span>Link relations: Draw a state diagram</span></p></li>
-          <li><p><span>Check against existing profiles: can you leverage any?</span></p></li>
-          <li><p><span>Choose a media type</span></p></li>
-          <li><p><span>Write your profile of your application semantics</span></p><p><span><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></p></li>
-          <li style="color:grey;"><p><span style="color:grey;">Code!!</span></p></li>
-          <li style="color:grey;"><p><span style="color:grey;">Publish the "billboard URL"</span></p></li>
+        <ol><li><p><span><b>Semantic descriptors</b>: list all info a client might have as input/output</span></p></li>
+          <li><p><span><b>Link relations</b>: Draw a state diagram</span></p></li>
+          <li><p><span><b>Check against existing profiles</b>: can you leverage any?</span></p></li>
+          <li><p><span><b>Choose a media type</b></span></p></li>
+          <li><p><span><b>Write your profile of your application semantics</b></span></p><p><span><small>The more you found in 3 and 4, the less you need to do in 5.</small></span></p></li>
+          <li style="color:grey;"><p><b><span style="color:grey;">Code!!</b></span></p></li>
+          <li style="color:grey;"><p><b><span style="color:grey;">Publish the "billboard URL"</b></span></p></li>
         </ol>
         <small><p><a href="https://books.google.com/books?id=wWnGAAAAQBAJ&lpg=PA146&ots=FfcpzHY94a&dq=%22semantic%20descriptors%22%20amundsen&pg=PA158#v=onepage&q&f=false">7 Step Design Procedure</a> from <a href="http://www.amazon.com/RESTful-Web-APIs-Leonard-Richardson/dp/1449358063">RESTful Web APIs</a> by Leonard Richardson, Mike Amundsen, Sam Ruby</p></small>
         </section>
 
         <section>
         <p align="left">ZipErrands API</p>
-        <p align="left">Use case: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
+        <p align="left"><b>Use case</b>: As a Zipcar member, I want to find the nearest car available, so that I can use it to run an errand that will take under an hour.</p>
         </section>
 
         <section>
@@ -397,7 +397,7 @@ top: 42px;
         <section>
         <section>
         <p>What do we need out of a media type?</p>
-        <p class="fragment">A way for the client to figure out: <span style="color:#7070DB;" class="fragment">what kind of requests can I make<span>, <span style="color:#5A5AAF;" class="fragment">how do I make them,</span><span style="color:#363669;" class="fragment"> and <i>why</i> would I want to make them?</span></p>
+        <p class="fragment" align="left">A way for the client to figure out: <span style="color:#7070DB;" class="fragment">what kind of requests can I make<span>, <span style="color:#5A5AAF;" class="fragment">how do I make them,</span><span style="color:#363669;" class="fragment"> and <i>why</i> would I want to make them?</span></p>
         <h2 class="fragment">worst case: Protocol Semantics</h2>
         <h2 class="fragment">best case: Application Semantics</h2>
         </section>
@@ -580,11 +580,11 @@ Content-Type: application/atom+xml
           <li class="fragment"><a href="http://restful-api-design.readthedocs.org/en/latest/resources.html">Resources</a> have unique, addressable identifiers.</li>
           <li class="fragment">To modify the state of a resource, you send <a href="http://restful-api-design.readthedocs.org/en/latest/resources.html#representations">representations</a>. (Messages.)</li>
           <li class="fragment">These representations should be self-describing, <span class="fragment">so that the client never needs out-of-band information to make its next request.</span></li>
-          <li class="fragment">Work from the state transitions, <b>not</b> from the resources underneath. <span class="fragment">Design from representations of state change, <b>not</b> from the object whose state will change.</li>
+          <li class="fragment">Work from the state transitions, <b>not</b> from the resources underneath. <span class="fragment">Design from representations of state change, <b>not</b> from the object whose state will change. <span class="fragment"><b>Work from the messages, not from the objects.</b></span></li>
         </ul>
         </section>
-        <section>
-          <p>Leverage the work of your community, and be <b>proud</b> of contributing to that community.</p>
+        <section data-background="bunch-sloths.jpg">
+          <p style="background-color:rgba(0, 0, 0, 0.7); color:white;">Leverage the work of your community, and be <b>proud</b> of contributing to that community.</p>
         </section>
       </div>
 
